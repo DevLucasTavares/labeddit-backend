@@ -1,20 +1,21 @@
 export enum USER_ROLES {
   NORMAL = "NORMAL",
+  PREMIUM = 'PREMIUM',
   ADMIN = "ADMIN",
 }
 
 export interface TokenPayload {
   id: string;
-  name: string;
+  nickname: string;
   role: USER_ROLES;
 }
 
 // backend
 export interface UserDB {
   id: string;
-  name: string;
   email: string;
   password: string;
+  nickname: string;
   role: USER_ROLES;
   created_at: string;
 }
@@ -22,8 +23,8 @@ export interface UserDB {
 // frontend
 export interface UserModel {
   id: string;
-  name: string;
   email: string;
+  nickname: string;
   role: USER_ROLES;
   createdAt: string;
 }
@@ -31,9 +32,9 @@ export interface UserModel {
 export class User {
   constructor(
     private id: string,
-    private name: string,
     private email: string,
     private password: string,
+    private nickname: string,
     private role: USER_ROLES,
     private createdAt: string
   ) {}
@@ -46,28 +47,28 @@ export class User {
   public setId(value: string): void {
     this.id = value;
   }
-
-  public getName(): string {
-    return this.name;
-  }
-  public setName(value: string): void {
-    this.name = value;
-  }
-
+  
   public getEmail(): string {
     return this.email;
   }
   public setEmail(value: string): void {
     this.email = value;
   }
-
+  
   public getPassword(): string {
     return this.password;
   }
   public setPassword(value: string): void {
     this.password = value;
   }
-
+  
+  public getNickname(): string {
+    return this.nickname;
+  }
+  public setNickname(value: string): void {
+    this.nickname = value;
+  }
+  
   public getRole(): USER_ROLES {
     return this.role;
   }
@@ -86,9 +87,9 @@ export class User {
   public toDBModel(): UserDB {
     return {
       id: this.id,
-      name: this.name,
       email: this.email,
       password: this.password,
+      nickname: this.nickname,
       role: this.role,
       created_at: this.createdAt
     };
@@ -97,8 +98,8 @@ export class User {
   public toBusinessModel(): UserModel {
     return {
       id: this.id,
-      name: this.name,
       email: this.email,
+      nickname: this.nickname,
       role: this.role,
       createdAt: this.createdAt
     }
