@@ -14,7 +14,7 @@ export interface PostModel {
   id: string;
   creator: {
     id: string;
-    name: string;
+    nickname: string;
   };
   title: string;
   content: string;
@@ -27,7 +27,7 @@ export class Post {
   constructor(
     private id: string,
     private creatorId: string,
-    private creatorName: string,
+    private creatorNickname: string,
     private title: string,
     private content: string,
     private upvotes: number,
@@ -51,10 +51,10 @@ export class Post {
   }
 
   public getCreatorName(): string {
-    return this.creatorName;
+    return this.creatorNickname;
   }
   public setCreatorName(value: string): void {
-    this.creatorName = value;
+    this.creatorNickname = value;
   }
 
   public getTitle(): string {
@@ -110,7 +110,7 @@ export class Post {
       id: this.id,
       creator: {
         id: this.creatorId,
-        name: this.creatorName
+        nickname: this.creatorNickname
       },
       title: this.title,
       content: this.content,

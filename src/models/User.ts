@@ -1,6 +1,6 @@
 export enum USER_ROLES {
   NORMAL = "NORMAL",
-  PREMIUM = 'PREMIUM',
+  PREMIUM = "PREMIUM",
   ADMIN = "ADMIN",
 }
 
